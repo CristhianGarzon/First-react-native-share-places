@@ -13,7 +13,7 @@ export default class UsersMap extends React.Component<Props>{
             <View style = {styles.mapContainer}>
                 <MapView  
                 style = {styles.map}
-                provider={PROVIDER_GOOGLE}
+                    
                 />
             </View>
 
