@@ -10,6 +10,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import FetchLocation from './components/FetchLocation';
+import UsersMap from './components/UsersMap';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,12 +22,23 @@ const instructions = Platform.select({
 
 interface Props {}
 export default class App extends Component<Props> {
+
+  getUserLocationHandler = () => {
+    
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log('my position', position);
+    },
+    err => {
+      console.log(err);
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.tsx</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text >It works!</Text>
+        <FetchLocation onGetLocation={this.getUserLocationHandler}/>
+        <UsersMap></UsersMap>
       </View>
     );
   }
